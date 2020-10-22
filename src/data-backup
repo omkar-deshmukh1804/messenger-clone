@@ -1,0 +1,74 @@
+<div className="container">
+            <form className = "app__form">
+            <FormControl className="app__formControl">
+              <Input className="app__input" placeholder="Enter your message" value={input} onChange={event => setInput(event.target.value)}  />
+              <IconButton className ="app__iconButton" disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessage}>
+                <SendIcon />
+              </IconButton>
+            </FormControl>
+          </form>
+          
+          <FlipMove>
+            {
+              messages.map(({id , message}) => (
+                <Message className="app__message" key={id} username={username} message ={message} />
+              ))
+            }
+          </FlipMove>
+      </div>
+
+
+
+      --------------------------------------------------------------------
+
+      .App {
+  text-align: center;
+}
+
+
+.app__form
+  {
+  padding : 20px;
+  bottom: 0;
+  /* z-index: 1; */
+  background-color: #e9e9e9;
+  width: 100%;
+  position : fixed;
+
+  }
+
+  .app__message
+  {
+    height: 90vh;
+  }
+
+  .app__formControl
+  {
+
+    display : flex !important;
+    flex-direction: row !important;
+    margin : 10px !important;
+  
+
+  }
+  .container
+  {
+    display: flex !important;
+    flex-direction: column !important;
+
+  }
+.app__input
+  {
+    flex: 1;
+    height: 5vh !important;
+  }
+  .app__message
+  {
+    height: 95vh !important;
+  }
+  .app__iconButton
+  {
+    flex : 0;
+    
+
+  }

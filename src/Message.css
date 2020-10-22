@@ -1,0 +1,23 @@
+.message
+    {
+
+        padding : 20px;
+        margin : 10px;
+        width : fit-content;
+        
+    }
+
+.message__user
+    {
+        margin-left: auto;
+        color : whitesmoke !important;
+        text-align: right ! important;
+        background: linear-gradient(#348F50, #56B4D3) !important;
+
+    }
+.message__guest
+    {
+        background: linear-gradient(#614385, #516395) !important;
+        color : whitesmoke !important;
+
+    }
