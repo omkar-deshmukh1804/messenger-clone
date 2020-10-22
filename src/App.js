@@ -6,12 +6,16 @@ import firebase from "firebase";
 import FlipMove from 'react-flip-move';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
-import './App.css';
+import ModalComponent from './ModalComponent.js'
+import './App.css'
+
+
 
 function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([])
   const [username, setUsername] = useState('')
+
 
 
   const sendMessage = (event) => {
@@ -33,28 +37,38 @@ function App() {
       setMessages(snapshot.docs.map(doc => ({id : doc.id , message: doc.data() })))
     })
   }, []);
+
+ 
+
+
+
   useEffect(() => {
     //run the code based on any condition
     //if the [] is blank, then this code runs ONCE when the app component loads
     // if [input ] is not blank, code runs everytime the input changes
-    setUsername(prompt("Please enter your name"))
   }, []);
 
+  const getUsername = (input) => {
+  
+    setUsername(input)
+  }
+
+  
 
   return (
     <div className="App">
+      <ModalComponent sendUsername={getUsername}/>
       <div className="app__header">
-        <h1 className="app__title"> Messenger <span><i class="fab fa-facebook-messenger app__logo"></i></span></h1>
+        <h1 className="app__title"> Messenger <span><i className="fab fa-facebook-messenger app__logo"></i></span></h1>
         <h4>Welcome, {username} ❗</h4>
       </div>
-    
       <div className="container-fluid app__container">
         <div className="row">
             <div className="col-12">
                 <FlipMove>
                 {
                   messages.map(({id , message}) => (
-                    <Message className="app__message" key={id} username={username} message ={message} />
+                    <Message className="app__message" key={id} username={username} message ={message}  timestamp={message.timestamp} />
                   ))
                 }
               </FlipMove>
@@ -62,8 +76,11 @@ function App() {
 
             <div className="col-12">
               <form className = "app__form">
-                <FormControl className="app__formControl">
-                  <Input className="app__input" placeholder="Enter your message" value={input} onChange={event => setInput(event.target.value)}  />
+              <FormControl className="app__formControl">
+                <InputLabel color="primary">Enter Your Message 📧</InputLabel>
+                  <Input className="app__input"  value={input} onChange={event => setInput(event.target.value)}
+                  color="primary"
+                />
                   <IconButton className ="app__iconButton" disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessage}>
                     <SendIcon />
                   </IconButton>
