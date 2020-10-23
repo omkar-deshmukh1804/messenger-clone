@@ -8,8 +8,9 @@ body
 }
 .app__container
 {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
 }
 h4, .app__title
 {
@@ -34,13 +35,16 @@ h4, .app__title
   position: fixed;
   bottom: 0;
   height: 10vh !important;
-  width: 97vw; 
+  width: 100vw; 
+  z-index: 0 !important;
+  flex : 0.1 !important;
 
 }
 
 .app__message
 {
   height: 80vh !important;
+  flex : 0.8 !important;
 }
 
 .app__formControl

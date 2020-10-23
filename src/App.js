@@ -62,9 +62,7 @@ function App() {
         <h1 className="app__title"> Messenger <span><i className="fab fa-facebook-messenger app__logo"></i></span></h1>
         <h4>Welcome, {username} ❗</h4>
       </div>
-      <div className="container-fluid app__container">
-        <div className="row">
-            <div className="col-12">
+      <div className="app__container">
                 <FlipMove>
                 {
                   messages.map(({id , message}) => (
@@ -72,9 +70,7 @@ function App() {
                   ))
                 }
               </FlipMove>
-            </div>
-
-            <div className="col-12">
+        
               <form className = "app__form">
               <FormControl className="app__formControl">
                 <InputLabel color="primary">Enter Your Message 📧</InputLabel>
@@ -86,8 +82,6 @@ function App() {
                   </IconButton>
                 </FormControl>
             </form>
-        </div>
-        </div>
       </div>
     </div>
   );
